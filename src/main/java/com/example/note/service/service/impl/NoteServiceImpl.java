@@ -17,12 +17,12 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public List<NoteDto> findAll() {
-        return noteMapper.toNotesDto(noteRepository.listAll());
+        return noteMapper.toNotesDto(noteRepository.findAll());
     }
 
     @Override
     public NoteDto findById(Long id) {
-        return noteMapper.toNoteDto(noteRepository.getById(id));
+        return noteMapper.toNoteDto(noteRepository.getReferenceById(id));
     }
 
     @Override
@@ -34,7 +34,7 @@ public class NoteServiceImpl implements NoteService {
     @Override
     public void update(NoteDto noteDto) {
             findById(noteDto.getId());
-            noteRepository.update(noteMapper.toNoteEntity(noteDto));
+            noteRepository.saveAndFlush(noteMapper.toNoteEntity(noteDto));
     }
 
     @Override

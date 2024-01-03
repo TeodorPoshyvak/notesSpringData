@@ -1,0 +1,5 @@
+CREATE TABLE notes (
+              id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+              title VARCHAR(250) NOT NULL UNIQUE CHECK (LENGTH(title) BETWEEN 3 AND 250),
+              content VARCHAR(250) NOT NULL
+);
